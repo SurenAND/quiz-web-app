@@ -8,7 +8,7 @@ const StartPage = () => {
       <h3 className="text-white text-2xl font-bold">Welcome to the quiz app</h3>
       <div className="flex flex-col items-center gap-3">
         <h4 className="text-white text-lg font-bold">GET START</h4>
-        <div className=" bg-white rounded-full p-2">
+        <div className=" bg-white rounded-full p-2 cursor-pointer">
           <img src={SpaceShip} alt="space ship" />
         </div>
       </div>
