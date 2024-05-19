@@ -4,6 +4,7 @@ export enum QuizActionTypesEnum {
   INCREMENT_SCORE = "INCREMENT_SCORE",
   NEXT_QUESTION = "NEXT_QUESTION",
   CHANGE_PAGE = "CHANGE_PAGE",
+  RESET = "RESET",
 }
 
 export type QuestionType = {

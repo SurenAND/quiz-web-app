@@ -4,7 +4,6 @@ import { QuizActionTypesEnum } from "../types/types";
 // initial form state
 const initialFormState = {
   page: 0,
-  currentPage: "start",
   quizData: [],
   currentQuestionIndex: 0,
   score: 0,
@@ -23,6 +22,8 @@ const formReducer = (state: any, action: any) => {
       return { ...state, currentQuestionIndex: state.currentQuestionIndex + 1 };
     case QuizActionTypesEnum.CHANGE_PAGE:
       return { ...state, page: action.payload.page };
+    case QuizActionTypesEnum.RESET:
+      return initialFormState;
 
     default:
       break;
