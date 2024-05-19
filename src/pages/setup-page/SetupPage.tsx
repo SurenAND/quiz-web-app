@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Quiz from "../../assets/images/quiz.svg";
 import Start from "../../assets/images/start.svg";
 import Selection from "../../components/shared/selection/Selection";
@@ -16,7 +16,7 @@ const SetupPage = () => {
   const [isNumberValid, setIsNumberValid] = useState(false);
 
   // context
-  const { formDispatch } = useFormContext();
+  const { formState, formDispatch } = useFormContext();
   // functions
   const handleNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value;
@@ -40,10 +40,20 @@ const SetupPage = () => {
   const handleData = () => {
     getAPI(number, category, difficulty)
       .then((data) =>
-        formDispatch({ type: QuizActionTypesEnum.SET_QUIZ_DATA, payload: data })
+        formDispatch({
+          type: QuizActionTypesEnum.SET_QUIZ_DATA,
+          payload: data,
+        })
       )
       .catch((err) => console.log(err));
   };
+
+  useEffect(() => {
+    console.log(formState.quizData);
+    if (formState.quizData.length > 0) {
+      handleNextPage();
+    }
+  }, [formState.quizData]);
 
   const handleNextPage = () => {
     formDispatch({
@@ -55,7 +65,6 @@ const SetupPage = () => {
   const handleSubmit = () => {
     if (isNumberValid) {
       handleData();
-      handleNextPage();
     } else {
       setNumberError(true);
     }

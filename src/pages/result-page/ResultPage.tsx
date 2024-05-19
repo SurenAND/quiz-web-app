@@ -1,7 +1,9 @@
 import Quiz from "../../assets/images/quiz.svg";
 import Congrats from "../../assets/images/congrats.webp";
+import { useFormContext } from "../../context/FormContext";
 
 function ResultPage() {
+  const { formState } = useFormContext();
   return (
     <div className="md:w-[45%] w-4/5 h-4/5 bg-violet-500 rounded-2xl m-auto p-10 flex flex-col items-center justify-between">
       {/* quiz img */}
