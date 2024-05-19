@@ -30,7 +30,10 @@ const formReducer = (state: any, action: any) => {
 };
 
 // Form Context
-const FormContext = createContext({});
+const FormContext = createContext<{
+  formState: any;
+  formDispatch: any;
+}>({ formState: initialFormState, formDispatch: () => {} });
 
 // custom hook to use FormContext
 export const useFormContext = () => useContext(FormContext);

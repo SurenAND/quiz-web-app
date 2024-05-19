@@ -5,3 +5,12 @@ export enum QuizActionTypesEnum {
   NEXT_QUESTION = "NEXT_QUESTION",
   CHANGE_PAGE = "CHANGE_PAGE",
 }
+
+export type QuestionType = {
+  type: string;
+  difficulty: string;
+  category: string;
+  question: string;
+  correct_answer: string;
+  incorrect_answers: string[];
+};
