@@ -71,7 +71,7 @@ const SetupPage = () => {
   };
 
   return (
-    <div className="md:w-[45%] w-4/5 h-4/5 bg-violet-500 rounded-2xl m-auto p-10 flex flex-col items-center gap-20">
+    <div className="md:w-[45%] w-4/5 2xl:h-4/5 bg-violet-500 rounded-2xl m-auto p-10 flex flex-col items-center gap-20">
       {/* quiz img */}
       <img src={Quiz} alt="quiz" className="w-44" />
       {/* title */}
