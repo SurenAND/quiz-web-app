@@ -1,10 +1,12 @@
 import Quiz from "../../assets/images/quiz.svg";
 import SpaceShip from "../../assets/images/space-ship.gif";
 import { useFormContext } from "../../context/FormContext";
+import { useTheme } from "../../hooks/useTheme";
 import { QuizActionTypesEnum } from "../../types/types";
 
 const StartPage = () => {
-  const { formDispatch }: any = useFormContext();
+  const { formDispatch } = useFormContext();
+  const { mode } = useTheme();
   return (
     <div className="md:w-[45%] w-4/5 h-4/5 bg-violet-500 rounded-2xl m-auto p-10 flex flex-col items-center justify-between">
       <img src={Quiz} alt="quiz" className="w-44" />
@@ -12,7 +14,9 @@ const StartPage = () => {
       <div className="flex flex-col items-center gap-3">
         <h4 className="text-white text-lg font-bold">GET START</h4>
         <div
-          className="bg-white rounded-full p-2 cursor-pointer"
+          className={`${
+            mode === "dark" ? "bg-gray-800" : "bg-white"
+          } rounded-full p-2 cursor-pointer`}
           onClick={() => {
             formDispatch({
               type: QuizActionTypesEnum.CHANGE_PAGE,
