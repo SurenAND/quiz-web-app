@@ -15,3 +15,20 @@ export type QuestionType = {
   correct_answer: string;
   incorrect_answers: string[];
 };
+
+export type FormReducerStateType = {
+  page: number;
+  quizData: QuestionType[];
+  currentQuestionIndex: number;
+  score: number;
+};
+
+export type FormReducerActionType = {
+  type: QuizActionTypesEnum;
+  payload?: any;
+};
+
+export type selectionProps = {
+  onchange: React.ChangeEventHandler<HTMLSelectElement>;
+  options: { value: string; label: string }[];
+};

@@ -1,7 +1,4 @@
-type selectionProps = {
-  onchange: React.ChangeEventHandler<HTMLSelectElement>;
-  options: { value: string; label: string }[];
-};
+import { selectionProps } from "../../../types/types";
 
 const Selection = ({ onchange, options }: selectionProps) => {
   return (

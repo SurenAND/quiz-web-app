@@ -1,8 +1,12 @@
 import { ReactNode, createContext, useContext, useReducer } from "react";
-import { QuizActionTypesEnum } from "../types/types";
+import {
+  FormReducerActionType,
+  FormReducerStateType,
+  QuizActionTypesEnum,
+} from "../types/types";
 
 // initial form state
-const initialFormState = {
+const initialFormState: FormReducerStateType = {
   page: 0,
   quizData: [],
   currentQuestionIndex: 0,
@@ -10,10 +14,13 @@ const initialFormState = {
 };
 
 // formReducer
-const formReducer = (state: any, action: any) => {
+const formReducer = (
+  state: FormReducerStateType,
+  action: FormReducerActionType
+): FormReducerStateType => {
   switch (action.type) {
     case QuizActionTypesEnum.SET_CURRENT_PAGE:
-      return { ...state, currentPage: action.payload };
+      return { ...state, page: action.payload };
     case QuizActionTypesEnum.SET_QUIZ_DATA:
       return { ...state, quizData: action.payload };
     case QuizActionTypesEnum.INCREMENT_SCORE:
@@ -26,20 +33,20 @@ const formReducer = (state: any, action: any) => {
       return initialFormState;
 
     default:
-      break;
+      return state;
   }
 };
 
 // Form Context
 const FormContext = createContext<{
-  formState: any;
-  formDispatch: any;
-}>({ formState: initialFormState, formDispatch: () => {} });
+  formState: FormReducerStateType;
+  formDispatch: React.Dispatch<FormReducerActionType>;
+}>({ formState: initialFormState, formDispatch: () => undefined });
 
 // custom hook to use FormContext
 export const useFormContext = () => useContext(FormContext);
 
-//  FormContext Provider
+// FormContext Provider
 export const FormProvider = ({ children }: { children: ReactNode }) => {
   const [formState, formDispatch] = useReducer(formReducer, initialFormState);
 

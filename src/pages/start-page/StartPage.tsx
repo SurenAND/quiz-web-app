@@ -12,7 +12,7 @@ const StartPage = () => {
       <div className="flex flex-col items-center gap-3">
         <h4 className="text-white text-lg font-bold">GET START</h4>
         <div
-          className=" bg-white rounded-full p-2 cursor-pointer"
+          className="bg-white rounded-full p-2 cursor-pointer"
           onClick={() => {
             formDispatch({
               type: QuizActionTypesEnum.CHANGE_PAGE,

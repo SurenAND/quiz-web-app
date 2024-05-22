@@ -9,11 +9,11 @@ import { useFormContext } from "../../context/FormContext";
 
 const SetupPage = () => {
   // states
-  const [number, setNumber] = useState(0);
-  const [category, setCategory] = useState("");
-  const [difficulty, setDifficulty] = useState("");
-  const [numberError, setNumberError] = useState(false);
-  const [isNumberValid, setIsNumberValid] = useState(false);
+  const [number, setNumber] = useState<number>(0);
+  const [category, setCategory] = useState<string>("");
+  const [difficulty, setDifficulty] = useState<string>("");
+  const [numberError, setNumberError] = useState<boolean>(false);
+  const [isNumberValid, setIsNumberValid] = useState<boolean>(false);
 
   // context
   const { formState, formDispatch } = useFormContext();
@@ -23,7 +23,7 @@ const SetupPage = () => {
     if (value < 5 || value > 50) {
       setNumberError(true);
     } else {
-      setNumber((prev) => (prev = value));
+      setNumber(value);
       setNumberError(false);
       setIsNumberValid(true);
     }

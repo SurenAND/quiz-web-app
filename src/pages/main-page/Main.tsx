@@ -7,8 +7,8 @@ function Main() {
   const { formState, formDispatch } = useFormContext();
   const { question, answers } = useQuestion();
 
-  const handleAnswerSelection = (selectedAnswer: string) => {
-    const handleAnswer = (selectedAnswer: string) => {
+  const handleAnswerSelection = (selectedAnswer: string): void => {
+    const handleAnswer = (selectedAnswer: string): void => {
       const currentQuestion =
         formState.quizData[formState.currentQuestionIndex];
       if (currentQuestion.correct_answer === selectedAnswer) {
@@ -36,7 +36,7 @@ function Main() {
         </p>
       </div>
       <div className="grid grid-cols-1 gap-4 w-full">
-        {answers?.map((answer, index) => {
+        {answers?.map((answer: string, index: number) => {
           return (
             <button
               key={index}
