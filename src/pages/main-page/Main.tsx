@@ -1,7 +1,12 @@
 import Quiz from "../../assets/images/quiz.svg";
 import { useFormContext } from "../../context/FormContext";
 import useQuestion from "../../hooks/useQuestion";
+import {
+  bounceInVariants,
+  fadeInDownVariants,
+} from "../../library/framerMotion";
 import { QuizActionTypesEnum } from "../../types/types";
+import { motion } from "framer-motion";
 
 function Main() {
   const { formState, formDispatch } = useFormContext();
@@ -29,23 +34,38 @@ function Main() {
   return (
     <div className="md:w-[45%] w-4/5 h-4/5 bg-violet-500 rounded-2xl m-auto p-10 flex flex-col items-center gap-20">
       {/* quiz img */}
-      <img src={Quiz} alt="quiz" className="w-44" />
-      <div className="bg-white p-3 rounded-xl w-5/6 h-1/4 shadow-2xl font-semibold">
-        <p>
+      <motion.img
+        variants={fadeInDownVariants}
+        initial="hidden"
+        animate="visible"
+        src={Quiz}
+        alt="quiz"
+        className="w-44"
+      />
+      <div className="bg-white p-3 rounded-xl w-5/6 h-1/4 shadow-2xl font-semibold overflow-hidden">
+        <motion.p
+          key={formState.currentQuestionIndex}
+          variants={fadeInDownVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {formState.currentQuestionIndex + 1} - {question?.question}
-        </p>
+        </motion.p>
       </div>
       <div className="grid grid-cols-1 gap-4 w-full">
         {answers?.map((answer: string, index: number) => {
           return (
-            <button
-              key={index}
+            <motion.button
+              variants={bounceInVariants}
+              initial="hidden"
+              animate="visible"
+              key={answer}
               className="w-3/4 flex gap-2 bg-teal-300 p-2 rounded-md mx-auto focus:bg-teal-200
          shadow-2xl font-semibold"
               onClick={() => handleAnswerSelection(answer)}
             >
               {index + 1}. {answer}
-            </button>
+            </motion.button>
           );
         })}
       </div>
